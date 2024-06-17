@@ -10,8 +10,6 @@ async function futbolistasApiC(name) {
   return results;
 }
 
-
-
 function App() {
   const [players, setPlayers] = useState([]);
 
@@ -34,28 +32,13 @@ function App() {
   }, [players]);
 
   return (
-    <>
-      <h1>Hola</h1>
-      <ul>
-        {players.length === 0 ? (
-          <p>Cargando...</p>) : 
-          (players.length > 0 ? (
-            <ul>
-              {players.map((player) => (
-                <li key={player.id}>
-                  <div>
-                    <p>{player.name}</p>
-                    <p>{player.age}</p> 
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No se encontraron jugadores</p>
-          )
-        )}
-      </ul>
-    </>
+   <>
+   <div>
+    
+    <span className='text-4xl uppercase font-serif text-blue-400'>Hola</span>
+
+   </div>
+   </>
   );
 }
-export default App
+export default App;

@@ -1,5 +1,4 @@
-export const futbolistasApi = (nombre) => {
-    const getFutbolista = async () => {
+export const futbolistasApi = async (nombre) => {
       try {
         const url = `/players/search/${nombre}`;
         const resp = await fetch(url);
@@ -9,18 +8,26 @@ export const futbolistasApi = (nombre) => {
         // const futbolista = results.map(resultado => ({
         //     name:resultado.name,
         //     club:resultado.club
-        // }));
-
-        console.log('hola: ',futbolista);
-       
+        // })); 
   
-        return await resp.json();
+        return await results;
       } catch (error) {
         console.log('Error en ', error, ' manin');
       }
-    };
-    getFutbolista();
-  };
+};
+
+// export const perfilFutbolista = async(id)=>{
+//   try {
+//     const url2 = `/players/${id}/profile`;
+//     const resp = await fetch(url2);
+    
+//     console.log('resultados -> ', resp);
+
+//     return await resp.json();
+//   } catch (error) {
+//     console.log('Error en ', error, ' manin');
+//   }
+// }
 
 
   /*

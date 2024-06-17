@@ -10,6 +10,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/players\/search/, '/players/search'),
       },
+      // 'players/:id/profile':{
+      //    target: 'https://transfermarkt-api.fly.dev',
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/players\/[^/]+\/profile/, '/players/profile'),
+      // }
     },
   },
 });

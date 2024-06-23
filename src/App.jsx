@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { futbolistasApi } from './services/restFlutterService'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css'
+import Login from './components/Login';
 
 async function futbolistasApiC(name) {
   // Simulación de una llamada a una API
@@ -13,6 +15,7 @@ async function futbolistasApiC(name) {
 function App() {
   const [players, setPlayers] = useState([]);
 
+  /*
   useEffect(() => {
     async function getPlayers(name) {
       try {
@@ -30,14 +33,21 @@ function App() {
   useEffect(() => {
     console.log('Componente App: ', players);
   }, [players]);
+   
+  */
+
+  const routerObjects = createBrowserRouter([
+    {
+      path: '/',
+      children: [
+        { path: 'Cliente/Login', element: <Login /> },
+      ],
+    },
+  ]);
 
   return (
    <>
-   <div>
-    
-    <span className='text-4xl uppercase font-serif text-blue-400'>Hola</span>
-
-   </div>
+    <RouterProvider router={routerObjects}/>
    </>
   );
 }

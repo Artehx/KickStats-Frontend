@@ -1,3 +1,5 @@
+
+/*
 export const futbolistasApi = async (nombre) => {
       try {
         const url = `/players/search/${nombre}`;
@@ -14,7 +16,8 @@ export const futbolistasApi = async (nombre) => {
       } catch (error) {
         console.log('Error en ', error, ' manin');
       }
-};
+};*/
+
 
 // export const perfilFutbolista = async(id)=>{
 //   try {
@@ -30,19 +33,22 @@ export const futbolistasApi = async (nombre) => {
 // }
 
 
-  /*
+
 let playersflutterService = {
 
     getPlayer: async function(nombre) {
         try {
             
-            var _pet = await fetch(`https://transfermarkt-api.fly.dev/players/search/${nombre}`)
-            
-              
+            var _pet = await fetch(`http://127.0.0.1:5000/buscarJugador?player_name=${nombre}`)
+            return await _pet.json();
 
         } catch (error) {
             
+          console.log(`Algo ha ido mal: ${error}`);
+          return [];
         }
     }
 }
-*/
+
+export default playersflutterService;
+

@@ -6,6 +6,9 @@ import Register from './components/Register';
 import ClientFormsLayout from './components/layouts/ClientForms';
 import HomeLayout from './components/layouts/HomeLayout';
 import Home from './components/portalComponents/Home';
+import {ToastContainer} from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 /*
 async function futbolistasApiC(name) {
@@ -17,8 +20,11 @@ async function futbolistasApiC(name) {
 }*/
 
 function App() {
-  const [players, setPlayers] = useState([]);
-
+  
+  const customPositionStyle = {
+    top: '110px', 
+    right: '20px', 
+  };
   /*
   useEffect(() => {
     async function getPlayers(name) {
@@ -60,6 +66,7 @@ function App() {
 
   return (
    <>
+    <ToastContainer autoClose={2800} style={customPositionStyle} position='top-right' />
     <RouterProvider router={routerObjects}/>
    </>
   );

@@ -34,7 +34,50 @@ export const futbolistasApi = async (nombre) => {
 
 
 
-let playersflutterService = {
+let restflutterService = {
+
+    register: async function(dataClient) {
+
+      try {
+       
+        var _pet = await fetch(`http://127.0.0.1:5000/registerClient`,
+          {
+          method: 'POST',
+          body: JSON.stringify({dataClient: dataClient}),
+          headers: {'Content-Type':'application/json'}
+          }
+        )
+
+        return await _pet.json();
+      
+      } catch (error) {
+
+        console.log(`Algo ha ido mal: ${error}`);
+          return [];
+      }
+
+
+    },
+    login: async function(email,password) {
+
+      try {
+       
+        var _pet = await fetch(`http://127.0.0.1:5000/loginClient`,
+          { method:'POST',
+            body:JSON.stringify({email: email,password: password}),
+            headers:{'Content-Type':'application/json'}
+          }
+        );
+        return await _pet.json();
+
+      } catch (error) {
+
+        console.log(`Algo ha ido mal: ${error}`);
+          return [];
+      }
+
+
+    },
 
     getPlayer: async function(nombre) {
         try {
@@ -50,5 +93,5 @@ let playersflutterService = {
     }
 }
 
-export default playersflutterService;
+export default restflutterService;
 

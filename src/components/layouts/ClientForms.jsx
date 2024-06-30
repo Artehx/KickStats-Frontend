@@ -2,12 +2,13 @@ import { Fragment, useState } from "react";
 import { ButtonGroup, Button } from "@material-tailwind/react";
 import Login from "../Login";
 import Register from "../Register";
+import restflutterService from "../../services/restFlutterService";
 
 function ClientForms () {
 
   let [currentForm, setCurrentForm] = useState('register');
 
- 
+  
 
   const handleFormChange = (form) => {
      setCurrentForm(form);
@@ -15,6 +16,23 @@ function ClientForms () {
      
   }
 
+  const handleFormSubmit = (formType, data) => {
+
+    console.log(`Datos del formulario ${formType}:`, data);
+
+    if(formType == 'register'){
+    
+     let response = restflutterService.register(formType)
+
+     console.log('Respuesta del servidor: ', response);
+
+    } else {
+
+
+    }
+
+
+  }
   
 
   return (
@@ -43,13 +61,15 @@ function ClientForms () {
                   <div class="flex justify-center w-9/12">
                   <ButtonGroup fullWidth>
                   <Button className={`text-base ${currentForm === 'register' ? 'bg-red-500' : 'bg-gray-500'}`} onClick={() => handleFormChange('register')}>Registro</Button>
-                  <Button className={`text-base ${currentForm === 'login' ? 'bg-yellow-700' : 'bg-gray-500'}`} onClick={() => handleFormChange('login')}>Login</Button>
+                  <Button className={`text-base ${currentForm === 'login' ? 'bg-yellow-800' : 'bg-gray-500'}`} onClick={() => handleFormChange('login')}>Login</Button>
                    
                 </ButtonGroup>
                   </div>
                 
                  <div class="max-w-lg w-full ">
-                 {currentForm === 'register' ? <Register /> : <Login />}
+                 {currentForm === 'register' ? <Register onFormSubmit={(data) => handleFormSubmit('register', data)}/> 
+                                             : 
+                                               <Login onFormSubmit={(data) => handleFormSubmit('login', data)}/>}
                   
                 </div>
               </div>

@@ -19,16 +19,20 @@ function ClientForms () {
   const handleFormSubmit = (formType, data) => {
 
     console.log(`Datos del formulario ${formType}:`, data);
+    let response;
+
 
     if(formType == 'register'){
     
-     let response = restflutterService.register(formType)
+     response = restflutterService.register(data.email, data.password)
 
-     console.log('Respuesta del servidor: ', response);
+     console.log('Respuesta del servidor (registro): ', response);
 
     } else {
 
+      response = restflutterService.login(data.email, data.password)
 
+      console.log('Respuesta del servidor (login): ', response);
     }
 
 

@@ -77,6 +77,8 @@ function Register({onFormSubmit}) {
             [name]: value,
          }))
 
+         console.log(formData.email);
+
          validationErrors[name] && delete validationErrors[name];
          setValidationErrors({... validationErrors });
 
@@ -103,6 +105,7 @@ function Register({onFormSubmit}) {
 
             } else {
             
+                
                 onFormSubmit(formData);
 
             }

@@ -36,14 +36,14 @@ export const futbolistasApi = async (nombre) => {
 
 let restflutterService = {
 
-    register: async function(dataClient) {
+    register: async function(email, password) {
 
       try {
        
         var _pet = await fetch(`http://127.0.0.1:5000/registerClient`,
           {
           method: 'POST',
-          body: JSON.stringify({dataClient: dataClient}),
+          body: JSON.stringify({email: email, password: password}),
           headers: {'Content-Type':'application/json'}
           }
         )
